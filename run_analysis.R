@@ -1,4 +1,3 @@
-run_analysis <- function () {
 ## download the data zip file and unzip the files
 if (!file.exists("data")) {dir.create("data")}
 fileUrl <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
@@ -44,4 +43,3 @@ data_set_named <- merge(activity_names,mean_std_data, by="activity_id", all.x=TR
 tidy_data <-aggregate(. ~subject_id + activity_names, data_set_named, mean)
 tidy_data <-tidy_data[order(tidy_data$subject_id, tidy_data$activity_id),]
 write.table(tidy_data, "tidy_data.txt", row.name=FALSE)
-  }
